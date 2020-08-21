@@ -4,16 +4,19 @@
 
   <modelVersion>4.0.0</modelVersion>
 
+  <properties>
+    <java.version>11</java.version>
+
+    <camunda-rest.version>7.13.0</camunda-rest.version>
+    <camunda-webapp.version>7.13.0</camunda-webapp.version>
+  </properties>
+
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.2.5.RELEASE</version>
     <relativePath/>
   </parent>
-
-  <properties>
-    <java.version>11</java.version>
-  </properties>
 
   <groupId>com.ferret56</groupId>
   <artifactId>camunda-workflow</artifactId>
@@ -23,25 +26,21 @@
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
       <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
-      <version>7.13.0</version>
+      <version>${camunda-rest.version}</version>
     </dependency>
-
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
       <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
-      <version>7.13.0</version>
+      <version>${camunda-webapp.version}</version>
     </dependency>
-
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-jdbc</artifactId>
     </dependency>
-
   </dependencies>
 
   <build>
