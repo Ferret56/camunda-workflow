@@ -6,6 +6,7 @@
     </bpmn:startEvent>
     <bpmn:serviceTask id="Activity_0s6uwwg" name="Check payment value" camunda:class="com.ferret56.app.bpm.CheckPaymentValue">
       <bpmn:incoming>Flow_00cw8zq</bpmn:incoming>
+      <bpmn:incoming>Flow_0phqpu8</bpmn:incoming>
       <bpmn:outgoing>Flow_0kujopv</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_00cw8zq" sourceRef="Event_150kc0d" targetRef="Activity_0s6uwwg" />
@@ -37,7 +38,18 @@
       <bpmn:incoming>Flow_0sdio54</bpmn:incoming>
       <bpmn:outgoing>Flow_0yo5yho</bpmn:outgoing>
     </bpmn:serviceTask>
+    <bpmn:boundaryEvent id="Event_0uzstb6" attachedToRef="Activity_0s6uwwg">
+      <bpmn:outgoing>Flow_0ad52af</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1x84p08" errorRef="Error_04qg3ct" />
+    </bpmn:boundaryEvent>
+    <bpmn:userTask id="Activity_1u06sbj" name="Retry payment">
+      <bpmn:incoming>Flow_0ad52af</bpmn:incoming>
+      <bpmn:outgoing>Flow_0phqpu8</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0ad52af" sourceRef="Event_0uzstb6" targetRef="Activity_1u06sbj" />
+    <bpmn:sequenceFlow id="Flow_0phqpu8" sourceRef="Activity_1u06sbj" targetRef="Activity_0s6uwwg" />
   </bpmn:process>
+  <bpmn:error id="Error_04qg3ct" name="paymentError" errorCode="paymentError" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="buy-pizza-process">
       <bpmndi:BPMNEdge id="Flow_0yo5yho_di" bpmnElement="Flow_0yo5yho">
@@ -72,6 +84,15 @@
         <di:waypoint x="218" y="240" />
         <di:waypoint x="290" y="240" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ad52af_di" bpmnElement="Flow_0ad52af">
+        <di:waypoint x="390" y="298" />
+        <di:waypoint x="390" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0phqpu8_di" bpmnElement="Flow_0phqpu8">
+        <di:waypoint x="340" y="430" />
+        <di:waypoint x="310" y="335" />
+        <di:waypoint x="310" y="280" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Event_150kc0d_di" bpmnElement="Event_150kc0d">
         <dc:Bounds x="182" y="222" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -98,6 +119,12 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1ylose9_di" bpmnElement="Activity_181rbwt">
         <dc:Bounds x="600" y="310" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0da87p6_di" bpmnElement="Activity_1u06sbj">
+        <dc:Bounds x="340" y="390" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0msxuqq_di" bpmnElement="Event_0uzstb6">
+        <dc:Bounds x="372" y="262" width="36" height="36" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
