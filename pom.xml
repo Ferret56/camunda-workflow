@@ -10,6 +10,7 @@
     <camunda-rest.version>7.13.0</camunda-rest.version>
     <camunda-webapp.version>7.13.0</camunda-webapp.version>
     <rabbit.version>2.2.10.RELEASE</rabbit.version>
+    <lombok.version>1.18.12</lombok.version>
   </properties>
 
   <parent>
@@ -47,6 +48,13 @@
       <artifactId>spring-rabbit</artifactId>
       <version>${rabbit.version}</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+    </dependency>
+
   </dependencies>
 
   <build>
