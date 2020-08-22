@@ -1,0 +1,15 @@
+version: '3.1'
+services:
+  app:
+    container_name: camunda-app
+    image: camunda-app-image
+    build: ./
+    ports:
+      - "8080:8080"
+    depends_on:
+      - rabbitmq
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"

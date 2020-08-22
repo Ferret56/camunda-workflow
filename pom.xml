@@ -9,6 +9,7 @@
 
     <camunda-rest.version>7.13.0</camunda-rest.version>
     <camunda-webapp.version>7.13.0</camunda-webapp.version>
+    <rabbit.version>2.2.10.RELEASE</rabbit.version>
   </properties>
 
   <parent>
@@ -40,6 +41,11 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-jdbc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.amqp</groupId>
+      <artifactId>spring-rabbit</artifactId>
+      <version>${rabbit.version}</version>
     </dependency>
   </dependencies>
 
